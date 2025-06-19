@@ -10,7 +10,7 @@ program
   .description(
     "CLI utility to convert TON wallet addresses to different formats"
   )
-  .version("1.0.4");
+  .version("1.0.5");
 
 program
   .argument("<address>", "TON wallet address to convert")
@@ -113,11 +113,11 @@ program
   .command("raw")
   .description("Convert to raw format only")
   .argument("<address>", "TON wallet address")
-  .option("-u, --uppercase", "output in uppercase")
-  .option("-l, --lowercase", "output in lowercase")
-  .action((addressInput, options, command) => { // Added command argument
-    const cmdOpts = command.opts(); // Get options from the command object
-    console.log('DEBUG: RAW Subcommand cmdOpts:', cmdOpts); 
+  .option("-U, --sub-uppercase", "output raw in uppercase") // Changed flag
+  .option("-L, --sub-lowercase", "output raw in lowercase") // Changed flag
+  .action((addressInput, options, command) => { 
+    const cmdOpts = command.opts(); 
+    // console.log('DEBUG: RAW Subcommand cmdOpts:', cmdOpts); // Temporarily remove or keep for one more test
     try {
       const address = Address.parse(addressInput);
       let rawString = address.toRawString();
@@ -127,18 +127,18 @@ program
       if (parts.length === 2) {
         const workchain = parts[0];
         let hexPart = parts[1];
-        if (cmdOpts.uppercase) { // Use cmdOpts
+        if (cmdOpts.subUppercase) { // Use new flag name
           hexPart = hexPart.toUpperCase();
-        } else if (cmdOpts.lowercase) { // Use cmdOpts
+        } else if (cmdOpts.subLowercase) { // Use new flag name
           hexPart = hexPart.toLowerCase();
         }
         result = `${workchain}:${hexPart}`;
       } else {
         // Fallback: apply case to the whole string if not in "workchain:hex" format
         result = rawString;
-        if (cmdOpts.uppercase) { // Use cmdOpts
+        if (cmdOpts.subUppercase) { // Use new flag name
           result = result.toUpperCase();
-        } else if (cmdOpts.lowercase) { // Use cmdOpts
+        } else if (cmdOpts.subLowercase) { // Use new flag name
           result = result.toLowerCase();
         }
       }
