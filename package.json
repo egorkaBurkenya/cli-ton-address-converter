@@ -1,6 +1,6 @@
 {
   "name": "cli-ton-address-converter",
-  "version": "1.0.0",
+  "version": "1.0.2",
   "main": "index.js",
   "bin": {
     "ton-addr": "index.js"
