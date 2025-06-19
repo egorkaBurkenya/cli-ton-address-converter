@@ -10,7 +10,7 @@ program
   .description(
     "CLI utility to convert TON wallet addresses to different formats"
   )
-  .version("1.0.3");
+  .version("1.0.4");
 
 program
   .argument("<address>", "TON wallet address to convert")
@@ -115,8 +115,9 @@ program
   .argument("<address>", "TON wallet address")
   .option("-u, --uppercase", "output in uppercase")
   .option("-l, --lowercase", "output in lowercase")
-  .action((addressInput, options) => {
-    console.log('DEBUG: RAW Subcommand options:', options); // Added for debugging
+  .action((addressInput, options, command) => { // Added command argument
+    const cmdOpts = command.opts(); // Get options from the command object
+    console.log('DEBUG: RAW Subcommand cmdOpts:', cmdOpts); 
     try {
       const address = Address.parse(addressInput);
       let rawString = address.toRawString();
@@ -126,18 +127,18 @@ program
       if (parts.length === 2) {
         const workchain = parts[0];
         let hexPart = parts[1];
-        if (options.uppercase) {
+        if (cmdOpts.uppercase) { // Use cmdOpts
           hexPart = hexPart.toUpperCase();
-        } else if (options.lowercase) {
+        } else if (cmdOpts.lowercase) { // Use cmdOpts
           hexPart = hexPart.toLowerCase();
         }
         result = `${workchain}:${hexPart}`;
       } else {
         // Fallback: apply case to the whole string if not in "workchain:hex" format
         result = rawString;
-        if (options.uppercase) {
+        if (cmdOpts.uppercase) { // Use cmdOpts
           result = result.toUpperCase();
-        } else if (options.lowercase) {
+        } else if (cmdOpts.lowercase) { // Use cmdOpts
           result = result.toLowerCase();
         }
       }
