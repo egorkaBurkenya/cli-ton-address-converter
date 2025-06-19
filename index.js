@@ -228,9 +228,11 @@ program.addHelpText(
   `
 Examples:
   $ ton-addr EQBSHhxd7O2NtsQKZfKIywGVks10GaVidB5H6VJ4w8AZxOF_
-  $ ton-addr EQBSHhxd7O2NtsQKZfKIywGVks10GaVidB5H6VJ4w8AZxOF_ --format raw
+  $ ton-addr EQBSHhxd7O2NtsQKZfKIywGVks10GaVidB5H6VJ4w8AZxOF_ --format raw --uppercase
   $ ton-addr EQBSHhxd7O2NtsQKZfKIywGVks10GaVidB5H6VJ4w8AZxOF_ --uppercase
-  $ ton-addr raw EQBSHhxd7O2NtsQKZfKIywGVks10GaVidB5H6VJ4w8AZxOF_ --lowercase
+  $ ton-addr raw EQBSHhxd7O2NtsQKZfKIywGVks10GaVidB5H6VJ4w8AZxOF_ -U
+  $ ton-addr raw EQBSHhxd7O2NtsQKZfKIywGVks10GaVidB5H6VJ4w8AZxOF_ --sub-lowercase
+  $ ton-addr user-friendly EQBSHhxd7O2NtsQKZfKIywGVks10GaVidB5H6VJ4w8AZxOF_ -l
   $ ton-addr bounceable EQBSHhxd7O2NtsQKZfKIywGVks10GaVidB5H6VJ4w8AZxOF_
 `
 );

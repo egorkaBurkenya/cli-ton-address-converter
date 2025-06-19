@@ -73,11 +73,26 @@ ton-addr EQBSHhxd7O2NtsQKZfKIywGVks10GaVidB5H6VJ4w8AZxOF_ --lowercase
 
 Вывести определенный формат в верхнем/нижнем регистре:
 
-```bash
-ton-addr raw EQBSHhxd7O2NtsQKZfKIywGVks10GaVidB5H6VJ4w8AZxOF_ --uppercase
-ton-addr user-friendly EQBSHhxd7O2NtsQKZfKIywGVks10GaVidB5H6VJ4w8AZxOF_ --lowercase
-```
-*(Примечание: Для формата RAW, преобразование регистра применяется только к шестнадцатеричной части адреса, например, `0:ABCDEF...`)*
+*   При использовании основной команды с `--format <format_name>`, применяются глобальные флаги `--uppercase` или `--lowercase`.
+    ```bash
+    ton-addr EQBSHhxd7O2NtsQKZfKIywGVks10GaVidB5H6VJ4w8AZxOF_ --format raw --uppercase
+    ton-addr EQBSHhxd7O2NtsQKZfKIywGVks10GaVidB5H6VJ4w8AZxOF_ --format user-friendly --lowercase
+    ```
+
+*   Подкоманда `raw` имеет свои собственные флаги для форматирования регистра:
+    ```bash
+    ton-addr raw EQBSHhxd7O2NtsQKZfKIywGVks10GaVidB5H6VJ4w8AZxOF_ -U 
+    # Эквивалентно: ton-addr raw EQBSHhxd7O2NtsQKZfKIywGVks10GaVidB5H6VJ4w8AZxOF_ --sub-uppercase
+    
+    ton-addr raw EQBSHhxd7O2NtsQKZfKIywGVks10GaVidB5H6VJ4w8AZxOF_ -L
+    # Эквивалентно: ton-addr raw EQBSHhxd7O2NtsQKZfKIywGVks10GaVidB5H6VJ4w8AZxOF_ --sub-lowercase
+    ```
+    *(Примечание: Для формата RAW, преобразование регистра применяется только к шестнадцатеричной части адреса, например, `0:ABCDEF...`)*
+
+*   Другие подкоманды для конкретных форматов (`user-friendly`, `bounceable`, `non-bounceable`) используют стандартные флаги `-u, --uppercase` и `-l, --lowercase`:
+    ```bash
+    ton-addr user-friendly EQBSHhxd7O2NtsQKZfKIywGVks10GaVidB5H6VJ4w8AZxOF_ -u 
+    ```
 
 ## Поддерживаемые форматы
 
@@ -108,6 +123,8 @@ Bounceable Testnet       : kQBSHhxd7O2NtsQKZfKIywGVks10GaVidB5H6VJ4w8AZxFr1
 Non Bounceable Testnet   : 0QBSHhxd7O2NtsQKZfKIywGVks10GaVidB5H6VJ4w8AZxAcw
 Url Safe                 : EQBSHhxd7O2NtsQKZfKIywGVks10GaVidB5H6VJ4w8AZxOF_
 ```
+
+Примеры в справке (`ton-addr --help`), генерируемые `index.js`, также будут обновлены для отражения этих изменений. Для краткости они здесь не показаны, но будут обновлены в исходном коде.
 
 ## Справка
 

@@ -73,11 +73,26 @@ ton-addr EQBSHhxd7O2NtsQKZfKIywGVks10GaVidB5H6VJ4w8AZxOF_ --lowercase
 
 Output a specific format in uppercase/lowercase:
 
-```bash
-ton-addr raw EQBSHhxd7O2NtsQKZfKIywGVks10GaVidB5H6VJ4w8AZxOF_ --uppercase
-ton-addr user-friendly EQBSHhxd7O2NtsQKZfKIywGVks10GaVidB5H6VJ4w8AZxOF_ --lowercase
-```
-*(Note: For RAW format, uppercase/lowercase applies only to the hex part of the address, e.g., `0:ABCDEF...`)*
+*   When using the main command with `--format <format_name>`, the global `--uppercase` or `--lowercase` flags apply.
+    ```bash
+    ton-addr EQBSHhxd7O2NtsQKZfKIywGVks10GaVidB5H6VJ4w8AZxOF_ --format raw --uppercase
+    ton-addr EQBSHhxd7O2NtsQKZfKIywGVks10GaVidB5H6VJ4w8AZxOF_ --format user-friendly --lowercase
+    ```
+
+*   The `raw` subcommand has its own specific flags for case formatting:
+    ```bash
+    ton-addr raw EQBSHhxd7O2NtsQKZfKIywGVks10GaVidB5H6VJ4w8AZxOF_ -U 
+    # Equivalent to: ton-addr raw EQBSHhxd7O2NtsQKZfKIywGVks10GaVidB5H6VJ4w8AZxOF_ --sub-uppercase
+    
+    ton-addr raw EQBSHhxd7O2NtsQKZfKIywGVks10GaVidB5H6VJ4w8AZxOF_ -L
+    # Equivalent to: ton-addr raw EQBSHhxd7O2NtsQKZfKIywGVks10GaVidB5H6VJ4w8AZxOF_ --sub-lowercase
+    ```
+    *(Note: For RAW format, case transformation applies only to the hex part of the address, e.g., `0:ABCDEF...`)*
+
+*   Other specific format subcommands (`user-friendly`, `bounceable`, `non-bounceable`) use the standard `-u, --uppercase` and `-l, --lowercase` flags:
+    ```bash
+    ton-addr user-friendly EQBSHhxd7O2NtsQKZfKIywGVks10GaVidB5H6VJ4w8AZxOF_ -u 
+    ```
 
 ## Supported Formats
 
@@ -108,6 +123,8 @@ Bounceable Testnet       : kQBSHhxd7O2NtsQKZfKIywGVks10GaVidB5H6VJ4w8AZxFr1
 Non Bounceable Testnet   : 0QBSHhxd7O2NtsQKZfKIywGVks10GaVidB5H6VJ4w8AZxAcw
 Url Safe                 : EQBSHhxd7O2NtsQKZfKIywGVks10GaVidB5H6VJ4w8AZxOF_
 ```
+
+The help examples in `index.js` also need to be updated to reflect these changes. For brevity, they are not shown here but will be updated in the source code.
 
 ## Help
 
