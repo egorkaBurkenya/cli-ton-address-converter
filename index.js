@@ -10,7 +10,7 @@ program
   .description(
     "CLI utility to convert TON wallet addresses to different formats"
   )
-  .version("1.0.2");
+  .version("1.0.3");
 
 program
   .argument("<address>", "TON wallet address to convert")
@@ -116,6 +116,7 @@ program
   .option("-u, --uppercase", "output in uppercase")
   .option("-l, --lowercase", "output in lowercase")
   .action((addressInput, options) => {
+    console.log('DEBUG: RAW Subcommand options:', options); // Added for debugging
     try {
       const address = Address.parse(addressInput);
       let rawString = address.toRawString();
