@@ -3,12 +3,18 @@
   "version": "1.0.0",
   "main": "index.js",
   "bin": {
-    "ton-addr": "./index.js"
+    "ton-addr": "index.js"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "keywords": ["ton", "blockchain", "address", "converter", "cli"],
+  "keywords": [
+    "ton",
+    "blockchain",
+    "address",
+    "converter",
+    "cli"
+  ],
   "author": "",
   "license": "ISC",
   "description": "CLI utility to convert TON wallet addresses to different formats",
