@@ -10,7 +10,7 @@ program
   .description(
     "CLI utility to convert TON wallet addresses to different formats"
   )
-  .version("1.0.5");
+  .version("1.0.6");
 
 program
   .argument("<address>", "TON wallet address to convert")
